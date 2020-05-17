@@ -24,8 +24,8 @@ pipeline {
                 script {
                     container('jnlp') {
                         sh ''' 
-                           docker build --pull --rm -f "Dockerfile" -t msng9:latest "."
-                            echo ==+==+===+===+==
+                           docker build --pull --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
+                           docker images
                         '''
                     }
                 }
