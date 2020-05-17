@@ -25,7 +25,7 @@ pipeline {
                     container('jnlp-nodejs') {
 
                         sh '''    
-                           sudo yum update -y
+                           yum update -y
                            
                             echo ==+==+===+===+==
                         '''
