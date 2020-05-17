@@ -22,8 +22,7 @@ pipeline {
         stage('Build image') {
             steps{
                 script {
-                    container('jnlp-nodejs') {
-
+                    container('jnlp') {
                         sh ''' 
                            docker build --pull --rm -f "Dockerfile" -t msng9:latest "."
                             echo ==+==+===+===+==
