@@ -23,7 +23,7 @@ pipeline {
             steps{
                 script {
                     container('jnlp-nodejs') {
-                        docker.build registry + ":$BUILD_NUMBER"
+                        // docker.build registry + ":$BUILD_NUMBER"
                         sh '''
                             //docker built -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER .
                             echo ==+==+===+===+==
