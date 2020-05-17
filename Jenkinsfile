@@ -24,9 +24,8 @@ pipeline {
                 script {
                     container('jnlp-nodejs') {
 
-                        sh '''    
-                           yum update -y
-                           
+                        sh ''' 
+                           docker build --pull --rm -f "Dockerfile" -t msng9:latest "."
                             echo ==+==+===+===+==
                         '''
                     }
