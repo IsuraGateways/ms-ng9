@@ -25,7 +25,7 @@ pipeline {
                     container('jnlp') {
                         //docker.build registry + ":$BUILD_NUMBER"
                         sh '''
-                            docker images
+                            docker built -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER .
                             echo ==+==+===+===+==
                         '''
                     }
