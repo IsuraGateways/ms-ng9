@@ -27,7 +27,7 @@ pipeline {
                         sh '''
                             docker images
                             echo ==+==+===+===+==
-                        ''
+                        '''
                     }
                 }
             }
@@ -66,5 +66,3 @@ pipeline {
         // }   
     }
 }
-
-
