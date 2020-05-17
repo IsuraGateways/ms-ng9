@@ -41,28 +41,28 @@ pipeline {
         //         }
         //     }
         // }
-        // stage('Publish Image') {
-        //     steps {
-        //         container("jnlp") {
-        //             withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
-        //                 sh '''
-        //                     docker login -u $u -p $p harbor.asaru.info
-        //                     docker push harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER
-        //                 '''
-        //             } 
-        //         }
-        //     }
-        // }
-        // stage ("Clean up") {
-        //     steps {
-        //         script {
-        //             sh '''
-        //                 echo Cleanning up ...
-        //                 docker image rm harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
-        //                 docker images
-        //             '''
-        //         }
-        //     }
-        // }   
+        stage('Publish Image') {
+            steps {
+                container("jnlp") {
+                    withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
+                        sh '''
+                            docker login -u $u -p $p harbor.asaru.info
+                            docker push harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER
+                        '''
+                    } 
+                }
+            }
+        }
+        stage ("Clean up") {
+            steps {
+                script {
+                    sh '''
+                        echo Cleanning up ...
+                        docker image rm harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
+                        docker images
+                    '''
+                }
+            }
+        }   
     }
 }
