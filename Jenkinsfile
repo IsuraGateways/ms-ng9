@@ -25,12 +25,15 @@ pipeline {
                     container('jnlp-nodejs') {
 
                         sh '''    
+                           apt-get update
+                           
                             echo ==+==+===+===+==
                         '''
                     }
                 }
             }
         }
+        //docker built -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER .
         // stage ("Version Image"){
         //     steps {
         //         script {
