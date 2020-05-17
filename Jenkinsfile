@@ -21,9 +21,11 @@ pipeline {
         }
         stage('Build image') {
             steps{
-                container("jnlp") {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                    sh 'echo ==+==+===+===+=='
+                script {
+                    container('jnlp') {
+                        docker.build registry + ":$BUILD_NUMBER"
+                        sh 'echo ==+==+===+===+=='
+                    }
                 }
             }
         }
