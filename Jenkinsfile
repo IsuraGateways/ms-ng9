@@ -11,6 +11,7 @@ pipeline {
     environment {
         registry = "harbor.asaru.info/langues/ng-app:1.1."
         dockerImage = ""
+        BRANCH_NAME = "${BRANCH_NAME}"
     }
     agent  { label 'jenkins-docker-nodejs' }
     stages {
@@ -27,7 +28,6 @@ pipeline {
                            docker images
                            docker build --pull --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
                            docker images
-                           
                         '''
                     }
                 }
@@ -62,6 +62,7 @@ pipeline {
                         echo Cleanning up ...
                         docker image rm harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
                         docker images
+                        echo ${BRANCH_NAME}
                     '''
                 }
             }
