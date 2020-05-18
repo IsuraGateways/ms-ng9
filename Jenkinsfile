@@ -30,7 +30,7 @@ pipeline {
                             
                         // }
                         sh ''' 
-                           docker build --pull -f "Dockerfile.2"  "."
+                           docker build --pull --rm -f "Dockerfile.2"  "."
                            docker images
 
                         '''
