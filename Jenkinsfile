@@ -31,8 +31,10 @@ pipeline {
                         // }
                         sh ''' 
                            docker build --pull -f "Dockerfile.2"  "."
+                           npm --version
+                           ng version
                            docker images
-                           
+
                         '''
                     }
                 }
