@@ -1,0 +1,5 @@
+FROM node:alpine
+WORKDIR /app
+COPY . .
+RUN npm install @angular/cli@9.1.1  
+RUN npm  run e2e

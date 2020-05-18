@@ -20,19 +20,54 @@ pipeline {
                 git 'https://github.com/IsuraGateways/ms-ng9.git'
             }
         }
+        stage('Run Tests') {
+            parallel {
+                stage('Lint test') {
+                    steps {
+                        script {
+                            container('jnlp') {
+                                sh ''' 
+                                docker build --pull --rm -f "Dockerfile.2"  "."
+                                docker images
+                                '''
+                            }
+                        }
+                    }
+                }
+                stage('Unit Test') {
+                    steps {
+                        script {
+                            container('jnlp') {
+                                sh ''' 
+                                docker build --pull --rm -f "Dockerfile.3"  "."
+                                docker images
+                                '''
+                            }
+                        }
+                    }
+                }                
+                stage('e2e Test') {
+                    steps {
+                        script {
+                            container('jnlp') {
+                                sh ''' 
+                                docker build --pull --rm -f "Dockerfile.4"  "."
+                                docker images
+                                '''
+                            }
+                        }
+                    }
+                }
+            }
+        }
+                
         stage('Build image') {
             steps{
                 script {
                     container('jnlp') {
-                        // container('jnlp-nodejs') {
-                        //     sh 'node --version'
-                        //     sh 'npm --version'
-                            
-                        // }
                         sh ''' 
                            docker build --pull --rm -f "Dockerfile.2"  "."
                            docker images
-
                         '''
                     }
                 }
@@ -62,16 +97,16 @@ pipeline {
         //         }
         //     }
         // }
-        // stage ("Clean up") {
-        //     steps {
-        //         script {
-        //             sh '''
-        //                 echo Cleanning up ...
-        //                 docker image rm --force harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
-        //                 docker images
-        //                 '''
-        //         }
-        //     }
-        // }   
+        stage ("Clean up") {
+            steps {
+                script {
+                    sh '''
+                        echo Cleanning up ...
+                        docker image rm --force harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
+                        docker images
+                        '''
+                }
+            }
+        }   
     }
 }
