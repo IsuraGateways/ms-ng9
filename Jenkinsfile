@@ -26,7 +26,7 @@ pipeline {
                     container('jnlp') {
                         sh ''' 
                            docker images
-                           docker build --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
+                           docker build --pull --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
                            docker images
                         '''
                     }
