@@ -27,37 +27,37 @@ pipeline {
                         script {
                             container('jnlp') {
                                 sh ''' 
-                                docker build --pull --rm -f "Dockerfile.2"  "."
+                                docker build --pull --rm -f "Dockerfile.3"  "."
                                 docker images
                                 '''
                             }
                         }
                     }
                 }
-                // stage('Unit Test') {
+                stage('Unit Test') {
+                    steps {
+                        script {
+                            container('jnlp') {
+                                sh ''' 
+                                echo docker-images
+                                '''
+                            }
+                        }
+                    }
+                }                
+                // docker build --pull --rm -f "Dockerfile.3"  "."
+                // stage('e2e Test') {
                 //     steps {
                 //         script {
                 //             container('jnlp') {
                 //                 sh ''' 
-                //                 docker build --pull --rm -f "Dockerfile.3"  "."
+                //                 docker build --pull --rm -f "Dockerfile.4"  "."
                 //                 docker images
                 //                 '''
                 //             }
                 //         }
                 //     }
-                // }                
-                stage('e2e Test') {
-                    steps {
-                        script {
-                            container('jnlp') {
-                                sh ''' 
-                                docker build --pull --rm -f "Dockerfile.4"  "."
-                                docker images
-                                '''
-                            }
-                        }
-                    }
-                }
+                // }
             }
         }
                 
