@@ -62,8 +62,6 @@ pipeline {
                         echo Cleanning up ...
                         docker image rm --force harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
                         docker images
-                        docker image rm --force 55278d17bd3f 0d7df995f549 
-                        docker images
                         '''
                 }
             }
