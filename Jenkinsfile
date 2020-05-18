@@ -25,12 +25,12 @@ pipeline {
                 script {
                     container('jnlp') {
                         container('jnlp-nodejs') {
-                            sh ''' 
-                                node --version
-                                docker images
-                            '''
+                            sh 'node --version'
+                            sh 'npm --version'
                         }
-                      
+                        sh ''' 
+                           docker images
+                        '''
                     }
                 }
             }
