@@ -2,7 +2,7 @@ FROM node:alpine
 WORKDIR /app
 COPY . .
 RUN npm install @angular/cli@9.1.1  
-RUN ng version
+RUN npm  run lint
 
 
 
