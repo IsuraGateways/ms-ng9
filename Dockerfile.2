@@ -1,3 +1,6 @@
-FROM node:alpine AS TEST
 WORKDIR /app
 COPY . .
+RUN npm run lint
+
+
+

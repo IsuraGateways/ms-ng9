@@ -32,6 +32,7 @@ pipeline {
                         sh ''' 
                            docker build --pull -f "Dockerfile.2"  "."
                            docker images
+                           
                         '''
                     }
                 }
