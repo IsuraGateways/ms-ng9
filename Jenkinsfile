@@ -24,11 +24,13 @@ pipeline {
             steps{
                 script {
                     container('jnlp') {
-                        container('jnlp-nodejs') {
-                            sh 'node --version'
-                            sh 'npm --version'
-                        }
+                        // container('jnlp-nodejs') {
+                        //     sh 'node --version'
+                        //     sh 'npm --version'
+                            
+                        // }
                         sh ''' 
+                           docker build --pull -f "Dockerfile.2"  "."
                            docker images
                         '''
                     }
