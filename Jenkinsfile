@@ -27,7 +27,7 @@ pipeline {
                         script {
                             container('jnlp') {
                                 sh ''' 
-                                docker build --pull --rm -f "Dockerfile.3"  "."
+                                docker build --pull --rm -f "Dockerfile.2"  "."
                                 docker images
                                 '''
                             }
