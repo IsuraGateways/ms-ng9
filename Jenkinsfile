@@ -24,16 +24,20 @@ pipeline {
             steps{
                 script {
                     container('jnlp') {
-                        sh ''' 
-                           docker images
-                           docker build --pull --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
-                           docker images
-                        '''
+                        container('jnlp-nodejs') {
+                            sh ''' 
+                                node --version
+                                docker images
+                            '''
+                        }
+                      
                     }
                 }
             }
         }
-        //docker built -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER .
+        // docker images
+        // docker build --pull --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
+        // docker built -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER .
         // stage ("Version Image"){
         //     steps {
         //         script {
@@ -43,28 +47,28 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Publish Image') {
-            steps {
-                container("jnlp") {
-                    withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
-                        sh '''
-                            docker login -u $u -p $p harbor.asaru.info
-                            docker push harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER
-                        '''
-                    } 
-                }
-            }
-        }
-        stage ("Clean up") {
-            steps {
-                script {
-                    sh '''
-                        echo Cleanning up ...
-                        docker image rm --force harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
-                        docker images
-                        '''
-                }
-            }
-        }   
+        // stage('Publish Image') {
+        //     steps {
+        //         container("jnlp") {
+        //             withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'p', usernameVariable: 'u')]) {
+        //                 sh '''
+        //                     docker login -u $u -p $p harbor.asaru.info
+        //                     docker push harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER
+        //                 '''
+        //             } 
+        //         }
+        //     }
+        // }
+        // stage ("Clean up") {
+        //     steps {
+        //         script {
+        //             sh '''
+        //                 echo Cleanning up ...
+        //                 docker image rm --force harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
+        //                 docker images
+        //                 '''
+        //         }
+        //     }
+        // }   
     }
 }
