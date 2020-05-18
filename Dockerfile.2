@@ -1,6 +1,9 @@
+FROM node:alpine AS TEST
 WORKDIR /app
 COPY . .
-RUN npm run lint
+RUN npm install @angular/cli@9.1.1  && \
+    ng lint
+
 
 
 
