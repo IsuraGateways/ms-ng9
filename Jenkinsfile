@@ -34,18 +34,18 @@ pipeline {
                         }
                     }
                 }
-                stage('Unit Test') {
-                    steps {
-                        script {
-                            container('jnlp') {
-                                sh ''' 
-                                docker build --pull --rm -f "Dockerfile.3"  "."
-                                docker images
-                                '''
-                            }
-                        }
-                    }
-                }                
+                // stage('Unit Test') {
+                //     steps {
+                //         script {
+                //             container('jnlp') {
+                //                 sh ''' 
+                //                 docker build --pull --rm -f "Dockerfile.3"  "."
+                //                 docker images
+                //                 '''
+                //             }
+                //         }
+                //     }
+                // }                
                 stage('e2e Test') {
                     steps {
                         script {
