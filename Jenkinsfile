@@ -26,7 +26,7 @@ pipeline {
                     container('jnlp') {
                         sh ''' 
                            docker images
-                           docker build --pull --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
+                           docker build --rm -f "Dockerfile" -t harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER "."
                            docker images
                         '''
                     }
@@ -60,10 +60,10 @@ pipeline {
                 script {
                     sh '''
                         echo Cleanning up ...
-                        docker image rm harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
+                        docker image rm --force harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
                         docker images
-                        echo String determineRepoName() { return scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.git")[0] }
-                    '''
+                        docker image rm --force 55278d17bd3f 0d7df995f549 
+                        docker images
                 }
             }
         }   
