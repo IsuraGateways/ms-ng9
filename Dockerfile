@@ -2,7 +2,6 @@ FROM node:alpine AS builder
 WORKDIR /app
 COPY . .
 RUN npm install && \
-    npm run lint \
     npm run build --prod 
 FROM nginx:alpine
 COPY --from=builder /app/dist/ms-ng9 /usr/share/nginx/html/
