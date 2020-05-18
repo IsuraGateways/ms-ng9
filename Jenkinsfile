@@ -64,6 +64,7 @@ pipeline {
                         docker images
                         docker image rm --force 55278d17bd3f 0d7df995f549 
                         docker images
+                        '''
                 }
             }
         }   
