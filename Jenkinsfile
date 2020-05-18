@@ -62,7 +62,7 @@ pipeline {
                         echo Cleanning up ...
                         docker image rm harbor.asaru.info/langues/ng-app:1.1.$BUILD_NUMBER 
                         docker images
-                        echo ${BRANCH_NAME}
+                        echo String determineRepoName() { return scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.git")[0] }
                     '''
                 }
             }
