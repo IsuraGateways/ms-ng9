@@ -1,0 +1,4 @@
+FROM node:alpine AS tester
+WORKDIR .
+RUN  npm install \
+    npm run test --no-watch
