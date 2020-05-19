@@ -1,4 +1,5 @@
-FROM node:alpine AS tester
-WORKDIR .
+FROM node:alpine AS builder
+WORKDIR /app
+COPY . .
 RUN  npm install \
-    npm run test --no-watch
+    ng test --no-watch:
